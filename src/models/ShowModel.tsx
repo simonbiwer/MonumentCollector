@@ -2,11 +2,10 @@ import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useGLTF, OrbitControls } from '@react-three/drei';
 import { View } from 'react-native';
+import {BACKEND_BASE_URL} from "@/src/constants";
 
-const localhostIP = '192.168.2.134';
-const port = '3000';
 
-const MODEL_URL = `http://${localhostIP}:${port}/Hand.glb`;
+const MODEL_URL = `${BACKEND_BASE_URL}/Hand.glb`;
 
 function HandModel() {
     const { scene } = useGLTF(MODEL_URL);
