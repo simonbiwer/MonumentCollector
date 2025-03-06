@@ -4,13 +4,13 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { createUserIdIfNotPresent } from "@/src/userIdUtils";
 import {useEffect} from "react";
+import {createCollectionIfNotPresent} from "@/src/CollectionManager";
 
 export default function HomeScreen() {
 
     useEffect(() => {
-        createUserIdIfNotPresent();
+        createCollectionIfNotPresent();
     }, []);
 
   return (
