@@ -18,7 +18,7 @@ export default function CollectMonumentScreen() {
             <ThemedText style={styles.title}>Here you can collect a new monument!</ThemedText>
             <Button title="Collect" onPress={handleCollectMonument} />
             {message && (
-                <ThemedText style={styles.result}>message</ThemedText>
+                <ThemedText style={styles.result}>{message}</ThemedText>
             )}
         </View>
     );
