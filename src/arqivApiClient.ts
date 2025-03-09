@@ -21,12 +21,16 @@ export async function updateCollection(monumentKey: string) {
     return monument.name;
 }
 
-export async function getCollection() {
+export async function getCollection(): Promise<string | Monument[]> {
     const userId = await getUserId();
     const url = `${COLLECTION_API_URL}/${userId}`;
     const response = await fetch(url, {method: "GET"});
-    const collection = await response.json();
-    // Todo: return Monument[] from collection
+    if (response.status != 200) {
+        return await response.json();
+    } else {
+        const collection = await response.json();
+        return collection.monuments as Monument[];
+    }
 }
 
 export async function getMonument(monumentKey: string) {

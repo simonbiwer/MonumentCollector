@@ -41,6 +41,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
       />
+        // Todo: Style tab for collectionOverview
     </Tabs>
   );
 }
