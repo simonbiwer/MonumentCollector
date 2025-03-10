@@ -1,7 +1,8 @@
 import {Monument} from "@/src/Monument";
 import React from "react";
-import {FlatList, StyleSheet, View} from "react-native";
+import {FlatList, StyleSheet, TouchableOpacity, View} from "react-native";
 import {ThemedText} from "@/components/ThemedText";
+import {Link} from "expo-router";
 
 interface MonumentListProps {
     monuments: Monument[];
@@ -15,11 +16,13 @@ const MonumentList: React.FC<MonumentListProps> = ({monuments}) => {
                 data={monuments}
                 keyExtractor={(item) => item.key}
                 renderItem={({item}) => (
-                    <View style={styles.card}>
-                        <ThemedText style={styles.monumentName}>{item.name}</ThemedText>
-                        <ThemedText style={styles.location}>{item.location}</ThemedText>
-                        <ThemedText style={styles.description}>{item.description}</ThemedText>
-                    </View>
+                    <Link href={{pathname: '/showMonument', params: { monumentKey: item.key } }} asChild={true}>
+                        <TouchableOpacity style={styles.card}>
+                            <ThemedText style={styles.monumentName}>{item.name}</ThemedText>
+                            <ThemedText style={styles.location}>{item.location}</ThemedText>
+                            <ThemedText style={styles.description}>{item.description}</ThemedText>
+                        </TouchableOpacity>
+                    </Link>
                 )}
             />
         </View>
