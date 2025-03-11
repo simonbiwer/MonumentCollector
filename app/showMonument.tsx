@@ -4,6 +4,7 @@ import {getMonument} from "@/src/arqivApiClient";
 import {ActivityIndicator, StyleSheet, View} from "react-native";
 import {ThemedText} from "@/components/ThemedText";
 import {useLocalSearchParams} from "expo-router";
+import MonumentModel from "@/app/components/ShowModel";
 
 export default function MonumentDetailsScreen() {
     const { monumentKey } = useLocalSearchParams() as {monumentKey: string};
@@ -30,13 +31,23 @@ export default function MonumentDetailsScreen() {
         return <ActivityIndicator size="large" color="#0000ff" />;
     }
 
-    return (
-        <View style={styles.container}>
-            <ThemedText style={styles.title}>{monument?.name}</ThemedText>
-            <ThemedText style={styles.location}>{monument?.location}</ThemedText>
-            <ThemedText style={styles.description}>{monument?.description}</ThemedText>
-        </View>
-    );
+    if (monument) {
+        return (
+            <View style={{ padding: 16 }}>
+                <ThemedText style={{ fontSize: 24, fontWeight: "bold", textAlign: "center" }}>
+                    {monument.name}
+                </ThemedText>
+
+                {/* Render the 3D model */}
+                <MonumentModel modelUrl={monument.modelPath} />
+
+                <ThemedText style={{ fontSize: 18, color: "gray", marginTop: 16 }}>
+                    {monument.location}
+                </ThemedText>
+                <ThemedText style={{ marginTop: 8 }}>{monument.description}</ThemedText>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
