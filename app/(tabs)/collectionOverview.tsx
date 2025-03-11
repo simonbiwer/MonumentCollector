@@ -3,7 +3,7 @@ import {ActivityIndicator} from 'react-native';
 import {Monument} from "@/src/Monument";
 import React, {useCallback, useState} from "react";
 import {getCollection} from "@/src/arqivApiClient";
-import MonumentList from "@/app/MonumentListComponent";
+import MonumentList from "@/app/components/MonumentListComponent";
 import {useFocusEffect} from "@react-navigation/core";
 
 export default function CollectionOverviewScreen() {
