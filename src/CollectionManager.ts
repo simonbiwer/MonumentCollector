@@ -1,16 +1,13 @@
-import {getUserId, saveUserId} from "@/src/userIdUtils";
+import {saveUserId} from "@/src/userIdUtils";
 import {createCollection, updateCollection} from "@/src/arqivApiClient";
 import {readNFC} from "@/src/nfcUtils";
 
-export async function createCollectionIfNotPresent() {
-    const userId = await getUserId();
-    console.log("found user id: " + userId);
-    if (!userId) {
-        console.log("creating user id...");
-        const newUserId = await createCollection();
-        await saveUserId(newUserId);
-        console.log("saved user id:" + newUserId);
-    }
+export async function createCollectionAndUserId(): Promise<string> {
+    console.log("creating user id...");
+    const newUserId = await createCollection();
+    await saveUserId(newUserId);
+    console.log("saved user id:" + newUserId);
+    return newUserId;
 }
 
 export async function collectMonument(): Promise<string> {

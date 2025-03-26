@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator, Pressable, Platform, Image } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, StyleSheet, ActivityIndicator, Pressable, Image } from 'react-native';
 import { useRouter } from 'expo-router';
-import { v4 as uuidv4 } from 'uuid';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { HelloWave } from '@/components/HelloWave';
-import { createCollectionIfNotPresent } from '@/src/CollectionManager';
+import { createCollectionAndUserId } from '@/src/CollectionManager';
+import {getUserId} from "@/src/userIdUtils";
 
 export default function HomeScreen() {
     const [userId, setUserId] = useState<string | null>(null);
@@ -17,20 +16,16 @@ export default function HomeScreen() {
 
     useEffect(() => {
         const checkUserId = async () => {
-            const storedId = await AsyncStorage.getItem('userId');
-            if (storedId) {
-                setUserId(storedId);
-                createCollectionIfNotPresent();
-            }
+            const storedId = await getUserId();
+            setUserId(storedId);
             setLoading(false);
         };
         checkUserId();
     }, []);
 
     const handleStart = async () => {
-        const newId = uuidv4();
-        await AsyncStorage.setItem('userId', newId);
-        setUserId(newId);
+        const newUserId = await createCollectionAndUserId();
+        setUserId(newUserId);
         router.push('/collectMonument');
     };
 
