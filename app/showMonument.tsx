@@ -1,7 +1,7 @@
 import { Monument } from "@/src/Monument";
 import {useEffect, useState} from "react";
 import {getMonument} from "@/src/arqivApiClient";
-import {ActivityIndicator, StyleSheet, View} from "react-native";
+import {ActivityIndicator, StyleSheet, ScrollView, View} from "react-native";
 import {ThemedText} from "@/components/ThemedText";
 import {useLocalSearchParams} from "expo-router";
 import MonumentModel from "@/app/components/ShowModel";
@@ -33,26 +33,47 @@ export default function MonumentDetailsScreen() {
 
     if (monument) {
         return (
-            <View style={{ padding: 16 }}>
-                <ThemedText style={{ fontSize: 24, fontWeight: "bold", textAlign: "center" }}>
-                    {monument.name}
-                </ThemedText>
+            <View style={styles.container}>
+                <ScrollView style={styles.scrollView}>
+                    <ThemedText style={styles.title}>
+                        {monument.name}
+                    </ThemedText>
 
-                {/* Render the 3D model */}
-                <MonumentModel modelUrl={monument.modelPath} />
+                    {/* Render the 3D model */}
+                    <MonumentModel modelUrl={monument.modelPath} />
 
-                <ThemedText style={{ fontSize: 18, color: "gray", marginTop: 16 }}>
-                    {monument.location}
-                </ThemedText>
-                <ThemedText style={{ marginTop: 8 }}>{monument.description}</ThemedText>
+                    <ThemedText style={styles.location}>
+                        {monument.location}
+                    </ThemedText>
+                    <ThemedText style={styles.description}>
+                        {monument.description}
+                    </ThemedText>
+                </ScrollView>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, padding: 16, backgroundColor: "#f5f5f5" },
-    title: { fontSize: 24, fontWeight: "bold", marginBottom: 8, textAlign: "center" },
-    location: { fontSize: 16, color: "#666", marginBottom: 8, textAlign: "center" },
-    description: { fontSize: 14, color: "#444", textAlign: "center" },
+    container: {
+        flex: 1,
+    },
+    scrollView: {
+        flexGrow: 1,
+        padding: 16,
+        backgroundColor: "#f5f5f5",
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: "bold",
+        textAlign: "center",
+    },
+    location: {
+        fontSize: 18,
+        color: "gray",
+        marginTop: 16,
+    },
+    description: {
+        marginTop: 8,
+    },
 });

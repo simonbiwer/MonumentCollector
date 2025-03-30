@@ -20,7 +20,6 @@ const MonumentList: React.FC<MonumentListProps> = ({monuments}) => {
                         <TouchableOpacity style={styles.card}>
                             <ThemedText style={styles.monumentName}>{item.name}</ThemedText>
                             <ThemedText style={styles.location}>{item.location}</ThemedText>
-                            <ThemedText style={styles.description}>{item.description}</ThemedText>
                         </TouchableOpacity>
                     </Link>
                 )}
