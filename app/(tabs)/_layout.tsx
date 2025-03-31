@@ -7,6 +7,7 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 export default function TabLayout() {
     const colorScheme = useColorScheme();
@@ -32,7 +33,7 @@ export default function TabLayout() {
                 options={{
                     title: 'Home',
                     tabBarIcon: ({ color }) => (
-                        <IconSymbol size={28} name="house.fill" color={color} />
+                        <IconSymbol size={24} name="house.fill" color={color} />
                     ),
                 }}
             />
@@ -42,7 +43,7 @@ export default function TabLayout() {
                 options={{
                     title: 'Collect Monument',
                     tabBarIcon: ({ color }) => (
-                        <IconSymbol size={28} name="dot.radiowaves.left.and.right" color={color} />
+                        <MaterialIcons name="document-scanner" size={24} color={color} />
                     ),
                 }}
             />
@@ -50,9 +51,9 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="collectionOverview"
                 options={{
-                    title: 'Overview',
+                    title: 'Collection',
                     tabBarIcon: ({ color }) => (
-                        <IconSymbol size={28} name="square.stack.3d.up.fill" color={color} />
+                        <MaterialIcons name="collections-bookmark" size={24} color={color} />
                     ),
                 }}
             />
