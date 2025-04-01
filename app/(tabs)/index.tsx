@@ -84,7 +84,7 @@ export default function HomeScreen() {
             </ThemedView>
 
             <ThemedView style={styles.titleContainer}>
-                <ThemedText type="title">Monument Collector</ThemedText>
+                <ThemedText type="title">Arqiv</ThemedText>
                 <HelloWave />
             </ThemedView>
 
