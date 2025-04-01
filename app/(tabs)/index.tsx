@@ -54,10 +54,10 @@ export default function HomeScreen() {
                     <Image source={require('@/assets/images/DoCH_Logo.png')} style={styles.logo} resizeMode="contain" />
                     <Image source={require('@/assets/images/DAAD_Logo.png')} style={styles.logo} resizeMode="contain" />
                 </View>
-                <Text style={styles.welcomeTitle}>Welcome to Monument Collector</Text>
+                <Text style={styles.welcomeTitle}>Welcome to Arqiv</Text>
                 <Text style={styles.descriptionText}>
-                    Discover and collect digital monuments around your city.
-                    This app is part of the “Digitalization of Cultural Heritage 2025” project.
+                    Discover and collect digital monuments in the museum.
+                    This app is part of the “Digitalization of Cultural Heritage” project.
                 </Text>
                 <Pressable style={styles.button} onPress={handleStart}>
                     <Text style={styles.buttonText}>Start Collection</Text>
@@ -71,9 +71,9 @@ export default function HomeScreen() {
             headerBackgroundColor={{ light: '#fff', dark: '#1D3D47' }}
             headerImage={<Banner />}
         >
-            <View style={styles.logoContainer}>
-                <Image source={require('@/assets/images/DoCH_Logo.png')} style={styles.logo} resizeMode="contain" />
-                <Image source={require('@/assets/images/DAAD_Logo.png')} style={styles.logo} resizeMode="contain" />
+            <View style={styles.logoContainerTight}>
+                <Image source={require('@/assets/images/DoCH_Logo.png')} style={styles.logoLarge} resizeMode="contain" />
+                <Image source={require('@/assets/images/DAAD_Logo.png')} style={styles.logoLarge} resizeMode="contain" />
             </View>
 
             <ThemedView style={styles.titleSection}>
@@ -91,7 +91,7 @@ export default function HomeScreen() {
             <ThemedView style={styles.stepContainer}>
                 <ThemedText type="subtitle">What is this app for?</ThemedText>
                 <ThemedText>
-                    This app allows users to collect and explore digital monuments in urban spaces. It is
+                    This app allows users to collect and explore digital monuments in museums. It is
                     designed to raise awareness of cultural heritage through playful interaction.
                 </ThemedText>
             </ThemedView>
@@ -131,9 +131,10 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     banner: {
-        height: 200,
+        height: 80,
         width: '100%',
-        marginBottom: 16,
+        marginBottom: 0,
+        marginTop: 20,
     },
     stripe: {
         flex: 1,
@@ -146,13 +147,24 @@ const styles = StyleSheet.create({
         gap: 16,
         marginBottom: 24,
     },
+    logoContainerTight: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 16,
+        marginBottom: 16,
+    },
     logo: {
         width: 120,
         height: 60,
     },
+    logoLarge: {
+        width: 190,
+        height: 100,
+    },
     titleSection: {
         paddingHorizontal: 24,
-        paddingTop: 24,
+        paddingTop: 0,
         paddingBottom: 16,
         alignItems: 'center',
     },

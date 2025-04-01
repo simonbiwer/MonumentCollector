@@ -29,6 +29,12 @@ export default function CollectMonumentScreen() {
             if (result) {
                 setMessage(result);
                 setCollected(true);
+
+                // Auto-reset button after 3 seconds
+                setTimeout( () => {
+                    setCollected(false);
+                    setMessage(null);
+                }, 3000);
             } else {
                 setHasError(true);
                 setMessage("Failed to scan NFC tag");
@@ -59,7 +65,7 @@ export default function CollectMonumentScreen() {
         <ScrollView contentContainerStyle={styles.container}>
             <Banner />
             <View style={styles.innerContainer}>
-                <ThemedText style={styles.title}>Here you can collect a new monument!</ThemedText>
+                <ThemedText style={styles.title}>Collect a new monument!</ThemedText>
 
                 <ThemedText style={styles.instructions}>
                     <ThemedText style={styles.bold}>How it works:{"\n"}</ThemedText>
@@ -130,9 +136,10 @@ const styles = StyleSheet.create({
         color: "#D62828",
     },
     banner: {
-        height: 200,
+        height: 80,
         width: '100%',
         marginBottom: 16,
+        marginTop: 20,
     },
     stripe: {
         flex: 1,

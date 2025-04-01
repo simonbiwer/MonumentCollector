@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginBottom: 16,
         textAlign: "center",
+        paddingTop: 24,
     },
     card: {
         backgroundColor: "#fff",
